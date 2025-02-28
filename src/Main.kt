@@ -1,5 +1,25 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+class Book(val title: String, val author: String, val year: Int?) {
+
+    init {
+        println("Book created: $title by $author")
+    }
+
+    fun printDetails() {
+        val yearPublished = year ?: "UNKNOWN"
+        println("Title: $title - Author: $author - Year: $yearPublished")
+    }
+}
+
+val bookList = mutableListOf(
+    Book("1984", "George Orwell", 1949),
+    Book("Brave New World", "Aldous Huxley", 1932),
+    Book("Fahrenheit 451", "Ray Bradbury", null)
+)
+
+fun findBookByTitle(title: String): Book? {
+    return bookList.find { it.title.equals(title.trim(), ignoreCase = true) }
+}
+
 fun main() {
     val name = "Kotlin"
     //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
